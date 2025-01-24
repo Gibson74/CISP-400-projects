@@ -1,0 +1,139 @@
+// a2-Garrison Gibson.txt -- Assignment 2
+// 1/26/2021
+// Garrison Gibson, CISP 400
+
+#include <iostream>
+using namespace std;
+//Function prototype
+void programGreeting();
+int menuOptions(int & option);
+int optionValidation(int & option);
+int optionSelection(int & option, int & isDone, int & accumulator, int* grades);
+
+//double gradeAdd(double* grades, double & accumulator, double & gradeValue);
+
+int option1(int & tester);
+//int option3()
+
+int main(){
+int option = 0;
+int isDone = 0;
+int tester = 0;
+int accumulator = 0;
+//B1 specification below
+double* grades = nullptr;
+int arraySize = 1;
+int select2 = 0;
+int i = 0;
+int gradeValue = 0;
+int letterGrade = 0;
+double gradeAverage = 0;
+
+grades = new double[arraySize];
+letterGrade = gradeValue;
+//double grades [x];
+programGreeting();
+while(isDone == 0){
+menuOptions(option);
+optionValidation(option);
+    if(option == 1){
+cout << "option 1" << endl;
+ cout << "enter grade number" << endl;
+  cin >> gradeValue;
+  grades[accumulator] = gradeValue;
+  accumulator = accumulator + 1;
+  cout << "accumulator has " << accumulator << endl;
+    //gradeAdd(grades, accumulator, gradeValue);
+    //grades(accumulator);
+  }
+  //specification C2 below
+  //specification C3 below
+  else if(option == 2){
+    int tester = 0;
+    cout << "option 2" << endl;
+    for (int i = 0; i < accumulator; i++) {
+  cout << "grade " << i + 1 << " is" << " a/an ";
+     //letterGrade(gradeValue);
+    if(grades[i] >= 90){
+    cout << "A";
+  }
+  else if(grades[i] >= 80){
+    cout << "B";
+  }
+  else if(grades[i] >= 70){
+    cout << "C";
+  }
+  else if(grades[i] >= 60){
+    cout << "D";
+  }
+  else if(grades[i] < 60){
+    cout << "F";
+  }
+   cout << " with a score of " << grades[i] << endl;
+  }
+    }
+    //specification C4 below
+  else if(option == 3){
+    cout << "option 3" << endl;
+    for (int i = 0; i < accumulator; i++){
+      gradeAverage = grades[i] + gradeAverage;
+    }
+    gradeAverage = gradeAverage / accumulator;
+    cout << "The grade average is " << gradeAverage;
+    cout << " and the average grade is ";
+    //specification B4 below
+    if(gradeAverage >= 90){
+    cout << "A";
+  }
+  else if(gradeAverage >= 80){
+    cout << "B";
+  }
+  else if(gradeAverage >= 70){
+    cout << "C";
+  }
+  else if(gradeAverage >= 60){
+    cout << "D";
+  }
+  else if(gradeAverage < 60){
+    cout << "F";
+    
+  }
+    cout << "\n" << endl;
+    gradeAverage = 0;
+    gradeAverage = gradeValue;
+  }
+  else if(option == 4){
+  isDone = 1;
+  }
+
+  }
+  cout << "Bye and thank you for using my gpa analyzer" << endl;
+  }
+
+//specification C1 below
+//function displays greeting message
+void programGreeting(){
+  cout << "Hello and welcome to my gpa analyzer" << endl;
+  cout << "Author Name: Garrison Gibson" << endl;
+  cout << "Due Date: February 20, 2022" << endl;
+}
+//This function displays the menu options
+int menuOptions(int & option){
+  cout << "What option number did you want to choose?" << endl;
+  cout << "Option 1: Add grade" << endl;
+  cout << "Option 2: Display all grades" << endl;
+  cout << "Option 3: Process all grades" << endl;
+  cout << "Option 4: Quit program" << endl;
+  return option;
+}
+
+int optionValidation(int & option){
+  //function takes and validates user input
+  //Specification B3 below
+  while (!(cin >> option) || (option > 4)) {
+    cout << "Invalid! Please try again." << endl;
+    cin.clear();
+    cin.ignore(123, '\n');
+  }
+  return option;
+}
